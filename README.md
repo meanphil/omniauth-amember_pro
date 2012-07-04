@@ -20,6 +20,11 @@ use OmniAuth::Builder do
 end                      
 ```
 
+## WARNING!
+
+The aMember Pro API requires the username and password to be sent in cleartext, MAKE SURE you use 
+HTTPS to access the API.
+
 ## Auth Hash Schema
 
 The following information is provided back to you for this provider:
