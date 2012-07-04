@@ -48,10 +48,7 @@ module OmniAuth
       end
 
       extra do
-        {
-          :soba_member_id => raw_info['membership_number'],
-          :raw_info       => raw_info 
-        }
+        { :raw_info => raw_info }
       end
 
       %w(username password).each do |field|
