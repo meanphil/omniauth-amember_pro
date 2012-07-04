@@ -44,8 +44,7 @@ private
       req.url endpoint.path
       req.params = { "_key" => api_key }.merge(params)
     end
-    
-    ret = {}
+
     if response.status == 200
         MultiJson.load(response.body)
     else
