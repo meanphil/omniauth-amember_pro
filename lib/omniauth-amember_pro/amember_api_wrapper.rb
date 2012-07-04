@@ -13,16 +13,11 @@ class AmemberApiWrapper
   end
   
   def login!(username, password)
-    result = perform_request('check-access/by-login-pass', {
-      login: username,
-       pass: password
-    })
-    if result["ok"] == true
-      @username = username
-      true
-    else
-      false
-    end
+    result = perform_request('check-access/by-login-pass', { login: username, pass: password })
+    
+    @username = username if result["ok"]
+    
+    result["ok"]
   end
   
   def user_info
