@@ -16,8 +16,8 @@ First, you will need an aMember Pro or two. Once you do that, you can use it lik
 
 ```ruby
 use OmniAuth::Builder do
-  provider :amember_pro
-end
+  provider :amember_pro, :auth_url => "https://www.example.org/amember/", :api_key => "xxxxxxxxxxxx"
+end                      
 ```
 
 ## Auth Hash Schema
@@ -28,11 +28,12 @@ The following information is provided back to you for this provider:
 {
   uid: '12345',
   info: {
-    nickname: 'login', # may be email
-    email: 'someone@example.com'
-  },
-  credentials: {
-    token: 'thetoken' # can be used to auth to the API
+    name: 'Joe Bloggs',
+    email: 'someone@example.com',
+    nickname: 'login'
+    first_name: 'Joe',
+    last_name: 'Bloggs',
+    location: 'Waikato'
   },
   extra: { raw_info: raw_api_response }
 }
