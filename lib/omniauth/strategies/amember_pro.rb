@@ -25,8 +25,16 @@ module OmniAuth
         api = AmemberApiWrapper.new(options)
         
         if api.login!(username, password)
+          # If the user logs in with their email address, aMember seems to 
+          # think it's a valid login, but then we can't filter the user
+          # for their info. So if user_info returns nil in that event, 
+          # just pretent it was the wrong username in the first place.
           @raw_info = api.user_info
-          super
+          if @raw_info.nil?
+            super
+          else
+            fail!(:invalid_credentials)
+          end
         else
           fail!(:invalid_credentials)
         end
