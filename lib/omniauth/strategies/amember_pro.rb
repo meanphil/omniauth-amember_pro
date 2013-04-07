@@ -28,12 +28,12 @@ module OmniAuth
           # If the user logs in with their email address, aMember seems to 
           # think it's a valid login, but then we can't filter the user
           # for their info. So if user_info returns nil in that event, 
-          # just pretent it was the wrong username in the first place.
+          # just pretend it was the wrong username in the first place.
           @raw_info = api.user_info
           if @raw_info.nil?
-            super
-          else
             fail!(:invalid_credentials)
+          else
+            super
           end
         else
           fail!(:invalid_credentials)
